@@ -1,0 +1,10 @@
+{
+  "resourceName": "ThingDB",
+  "tableName": "Measures",
+  "partitionKey": {
+    "fieldName": "Measure",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

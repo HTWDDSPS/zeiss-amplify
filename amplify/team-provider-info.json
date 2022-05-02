@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-zeissthingkathon-staging-165402-authRole",
+      "UnauthRoleArn": "arn:aws:iam::598253811674:role/amplify-zeissthingkathon-staging-165402-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::598253811674:role/amplify-zeissthingkathon-staging-165402-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-zeissthingkathon-staging-165402-deployment",
+      "UnauthRoleName": "amplify-zeissthingkathon-staging-165402-unauthRole",
+      "StackName": "amplify-zeissthingkathon-staging-165402",
+      "StackId": "arn:aws:cloudformation:eu-west-1:598253811674:stack/amplify-zeissthingkathon-staging-165402/7894f4d0-ca38-11ec-b597-06ab38c51c19",
+      "AmplifyAppId": "d2fits392f7rfa"
+    },
+    "categories": {
+      "auth": {
+        "ZeissThingkathon": {}
+      }
+    }
+  }
+}
