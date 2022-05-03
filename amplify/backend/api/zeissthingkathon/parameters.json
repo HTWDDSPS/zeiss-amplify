@@ -2,5 +2,5 @@
   "AppSyncApiName": "zeissthingkathon",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-05-02T20:47:51.244Z"
+  "AuthModeLastUpdated": "2022-05-03T11:25:20.855Z"
 }

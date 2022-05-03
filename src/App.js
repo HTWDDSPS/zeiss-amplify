@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { API } from 'aws-amplify';
+import { API, Storage } from 'aws-amplify';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
@@ -17,6 +17,7 @@ function App() {
   
   useEffect(() => {
     fetchNotes();
+    //fetchMeasures();
   }, []);
   
   async function fetchNotes() {
@@ -36,7 +37,12 @@ function App() {
     setNotes(newNotesArray);
     await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
   }
-  
+/*
+  async function fetchMeasures() {
+    const apiData = await Storage.get(listMeasures);
+    setMeasures(apiData.data.listMeasures.items);
+  };
+  */
 
 
   return (
@@ -74,6 +80,8 @@ function App() {
                 </div>
               ))
             }
+
+
           </div>
 
           
