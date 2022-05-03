@@ -9,9 +9,6 @@ export const onCreateNote = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -23,9 +20,6 @@ export const onUpdateNote = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -37,9 +31,156 @@ export const onDeleteNote = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+    }
+  }
+`;
+export const onCreateLine = /* GraphQL */ `
+  subscription OnCreateLine {
+    onCreateLine {
+      id
+      name
+      description
+      Asssets {
+        items {
+          id
+          name
+          description
+          positionX
+          positionY
+          status
+          createdAt
+          updatedAt
+          lineAsssetsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateLine = /* GraphQL */ `
+  subscription OnUpdateLine {
+    onUpdateLine {
+      id
+      name
+      description
+      Asssets {
+        items {
+          id
+          name
+          description
+          positionX
+          positionY
+          status
+          createdAt
+          updatedAt
+          lineAsssetsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteLine = /* GraphQL */ `
+  subscription OnDeleteLine {
+    onDeleteLine {
+      id
+      name
+      description
+      Asssets {
+        items {
+          id
+          name
+          description
+          positionX
+          positionY
+          status
+          createdAt
+          updatedAt
+          lineAsssetsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateAsset = /* GraphQL */ `
+  subscription OnCreateAsset {
+    onCreateAsset {
+      id
+      name
+      description
+      positionX
+      positionY
+      status
+      line {
+        id
+        name
+        description
+        Asssets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      lineAsssetsId
+    }
+  }
+`;
+export const onUpdateAsset = /* GraphQL */ `
+  subscription OnUpdateAsset {
+    onUpdateAsset {
+      id
+      name
+      description
+      positionX
+      positionY
+      status
+      line {
+        id
+        name
+        description
+        Asssets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      lineAsssetsId
+    }
+  }
+`;
+export const onDeleteAsset = /* GraphQL */ `
+  subscription OnDeleteAsset {
+    onDeleteAsset {
+      id
+      name
+      description
+      positionX
+      positionY
+      status
+      line {
+        id
+        name
+        description
+        Asssets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      lineAsssetsId
     }
   }
 `;

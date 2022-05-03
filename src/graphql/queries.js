@@ -9,9 +9,6 @@ export const getNote = /* GraphQL */ `
       description
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -28,40 +25,108 @@ export const listNotes = /* GraphQL */ `
         description
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
     }
   }
 `;
-export const syncNotes = /* GraphQL */ `
-  query SyncNotes(
-    $filter: ModelNoteFilterInput
+export const getLine = /* GraphQL */ `
+  query GetLine($id: ID!) {
+    getLine(id: $id) {
+      id
+      name
+      description
+      Asssets {
+        items {
+          id
+          name
+          description
+          positionX
+          positionY
+          status
+          createdAt
+          updatedAt
+          lineAsssetsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listLines = /* GraphQL */ `
+  query ListLines(
+    $filter: ModelLineFilterInput
     $limit: Int
     $nextToken: String
-    $lastSync: AWSTimestamp
   ) {
-    syncNotes(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
+    listLines(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
         description
+        Asssets {
+          nextToken
+        }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
+    }
+  }
+`;
+export const getAsset = /* GraphQL */ `
+  query GetAsset($id: ID!) {
+    getAsset(id: $id) {
+      id
+      name
+      description
+      positionX
+      positionY
+      status
+      line {
+        id
+        name
+        description
+        Asssets {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      lineAsssetsId
+    }
+  }
+`;
+export const listAssets = /* GraphQL */ `
+  query ListAssets(
+    $filter: ModelAssetFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAssets(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        positionX
+        positionY
+        status
+        line {
+          id
+          name
+          description
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+        lineAsssetsId
+      }
+      nextToken
     }
   }
 `;

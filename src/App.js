@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route}
 import Home from './pages';
 import About from './pages/about';
 import Notes from './pages/notes';
+import Asset from './pages/assets';
 
 import { Authenticator, AmplifyProvider, Button, Card, Text, Heading, Flex, Badge, Image, StepperField, useTheme, Tabs, TabItem } from '@aws-amplify/ui-react';
 
@@ -14,34 +15,84 @@ import './App.css';
 
 const initialFormState = { name: '', description: '' }
 
+const components = {
+
+  Footer() {
+    const { tokens } = useTheme();
+
+    return (
+      <div textAlign="center" padding={tokens.space.large}>
+        <Text color={`${tokens.colors.neutral['80']}`}>
+          &copy; All Rights Reserved
+        </Text>
+      </div>
+    );
+  },
+
+  SignIn: {
+    Header() {
+      const { tokens } = useTheme();
+
+      return (
+
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
+        >
+        <Image width={100} height={100} alt="Zeiss logo" src="https://logos-download.com/wp-content/uploads/2016/07/Carl_Zeiss_logo.png"/>
+        <p>Sign in to your account</p>
+        </Heading>
+      );
+    },
+  },
+  ResetPassword: {
+    Header() {
+      const { tokens } = useTheme();
+      return (
+        <Heading
+          padding={`${tokens.space.xl} 0 0 ${tokens.space.xl}`}
+          level={3}
+        >
+          Enter Information:
+        </Heading>
+      );
+    },
+    Footer() {
+      return <Text>Team SOBA (HTW Dresden)</Text>;
+    },
+  },
+
+};
+
 
 function App() {
+
+
+
+
   return (
     <div className="App">
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Welcome to Zeiss Thingkathon</h1>
-      </header>
-      <Authenticator>
+
+      <Authenticator hideSignUp={true} variation="modal" components={components}>
       {({ signOut, user }) => (
 
         <div className="App">
-        <p>
-        Hey {user.username}, welcome to my channel, with auth!
-        </p>
-          
-        <Router>
-        <Navbar />
-        <Routes>
+          <Router>
+          <Navbar />
+
+          <Routes>
             <Route exact path='/'  element={<Home />} />
             <Route path='/about' exact element={<About/>} />
             <Route path='/notes' element={<Notes/>} />
-        </Routes>
-        </Router>
+            <Route path='/asset' element={<Asset />} />
+          </Routes>
+          </Router>
+
           <button onClick={signOut}>Sign out</button>
         </div>
       )}
     </Authenticator>
+
     </div>
   );
 }

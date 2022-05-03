@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { API, Storage } from 'aws-amplify';
+import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { listNotes } from '../graphql/queries';
-import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from '../graphql/mutations';
+import * as mutations from '../graphql/mutations';
 
 const initialFormState = { name: '', description: '' }
 
@@ -9,7 +9,6 @@ const Notes = () => {
 
     const [notes, setNotes] = useState([]);
     const [formData, setFormData] = useState(initialFormState);
-    
     useEffect(() => {
       fetchNotes();
       //fetchMeasures();
@@ -22,16 +21,29 @@ const Notes = () => {
     
     async function createNote() {
       if (!formData.name || !formData.description) return;
-      await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+      await API.graphql({ query: mutations.createNote, variables: { input: formData } });
       setNotes([ ...notes, formData ]);
       setFormData(initialFormState);
     }
     
-    async function deleteNote({ id }) {
-      const newNotesArray = notes.filter(note => note.id !== id);
+    async function deleteNote(note) {
+      var newNotesArray = notes.filter(n => n.id !== note.id);
       setNotes(newNotesArray);
-      await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+      const noteItem = {
+        id: note.id
+      };
+      const result = await API.graphql({ query: mutations.deleteNote, variables: { input: noteItem }});
     }
+
+    async function updateNote(note) {
+        const noteDetails = {
+            id: note.id,
+            name: note.name,
+            description: "Some Crazy Update 2!"
+          };
+        const result = await API.graphql({ query: mutations.updateNote, variables: { input: noteDetails }});
+        fetchNotes() // should be updated without polling from DB again, but inline doesnt update the list... this works for now
+      }
 
     return (    
         <div>
@@ -51,8 +63,13 @@ const Notes = () => {
             notes.map(note => (
                 <div key={note.id || note.name}>
                 <h2>{note.name}</h2>
-                <p>{note.description}</p>
-                <button onClick={() => deleteNote(note)}>Delete note</button>
+                <p>{note.description} / {note.id} / 
+                <button onClick={() => {
+                    deleteNote(note)}
+                }>Delete note</button> / 
+                <button onClick={() => {
+                    updateNote(note)}
+                }>Update note</button> </p>
                 </div>
             ))
 

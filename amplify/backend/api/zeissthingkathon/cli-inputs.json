@@ -10,11 +10,7 @@
       "apiKeyExpirationDate": "2022-06-02T11:25:04.192Z",
       "keyDescription": "Demo"
     },
-    "conflictResolution": {
-      "defaultResolutionStrategy": {
-        "type": "AUTOMERGE"
-      }
-    },
+    "conflictResolution": {},
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"

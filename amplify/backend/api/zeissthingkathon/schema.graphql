@@ -1,6 +1,23 @@
-type Note @model @auth(rules: [{allow: public}]) {
+type Note @model @auth(rules: [{allow: public, operations: [create, update, delete, read]}]) {
   id: ID!
   name: String!
   description: String
+}
+
+type Line @model @auth(rules: [{allow: public, operations: [create, update, delete, read]}]) {
+  id: ID!
+  name: String!
+  description: String
+  Asssets: [Asset] @hasMany
+}
+
+type Asset @model @auth(rules: [{allow: public, operations: [create, update, delete, read]}]) {
+  id: ID!
+  name: String!
+  description: String
+  positionX: Float
+  positionY: Float
+  status: Float
+  line: Line @belongsTo
 }
  

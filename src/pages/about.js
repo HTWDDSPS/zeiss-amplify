@@ -4,8 +4,15 @@ const About = () => {
   return (
     <div>
       <h1>
-        GeeksforGeeks is a Computer 
-        Science portal for geeks.
+        Team SOBA, weil wir lieben Instant Noodles
+
+        Projektgruppe der HTW Dresden
+
+        Felix Brandt
+        Eric Brandt
+        Marvin Matthes
+        Paul Patolla
+        Martin Krockert 
       </h1>
     </div>
   );
