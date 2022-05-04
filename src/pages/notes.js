@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { listNotes } from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
-
+import { Flex, View, Image, Badge, Heading, Text, Button, Card, Placeholder, Divider, Table, TableHead, TableCell, TableRow, TableBody, useTheme } from '@aws-amplify/ui-react';
 const initialFormState = { name: '', description: '' }
 
 const Notes = () => {
@@ -46,35 +46,42 @@ const Notes = () => {
       }
 
     return (    
-        <div>
-            <input
-            onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-            placeholder="Note name"
-            value={formData.name}
-            />
-            <input
-            onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-            placeholder="Note description"
-            value={formData.description}
-            />
-            <button onClick={createNote}>Create Note</button>
-            <div style={{marginBottom: 30}}>
-            {
-            notes.map(note => (
-                <div key={note.id || note.name}>
-                <h2>{note.name}</h2>
-                <p>{note.description} / {note.id} / 
-                <button onClick={() => {
-                    deleteNote(note)}
-                }>Delete note</button> / 
-                <button onClick={() => {
-                    updateNote(note)}
-                }>Update note</button> </p>
-                </div>
-            ))
+        <div className='pageBody'>
+          <h1>Discribe your Alert and how did you solve it.</h1>
+            <Table
+              highlightOnHover={true}
+              size="small"
+              variation="striped"
+              textAlign="left"
+              >
+              <TableHead>
+                  <TableRow>
+                  <TableCell as="th">Name</TableCell>
+                  <TableCell as="th">Description</TableCell>
+                  <TableCell as="th" textAlign="right">Actions</TableCell>
+                  </TableRow>
+              </TableHead>
+              <TableBody>
+              <TableRow>
+                  <TableCell><input onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+                              placeholder="Note name" value={formData.name}/></TableCell>
+                  <TableCell><input onChange={e => setFormData({ ...formData, 'description': e.target.value})}
+                              placeholder="Note description" value={formData.description}/></TableCell>
+                  <TableCell textAlign="right"><button onClick={createNote}>Create Note</button></TableCell>
+                </TableRow>
+              {
+              notes.map(note => (  
+                <TableRow key={note.id || note.name}>
+                  <TableCell>{note.name}</TableCell>
+                  <TableCell>{note.description}</TableCell>
+                  <TableCell textAlign="right"><button onClick={() => {deleteNote(note)}}>Delete note</button>&nbsp; 
+                  <button onClick={() => {updateNote(note)}}>Update note</button></TableCell>
+                </TableRow>
+              ))
 
-            }
-            </div>
+              }
+              </TableBody>
+              </Table>
         </div>
         ); 
 }

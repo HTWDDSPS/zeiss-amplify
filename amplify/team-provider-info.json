@@ -18,7 +18,15 @@
       "function": {
         "get": {
           "deploymentBucketName": "amplify-thingkathon-staging-104313-deployment",
-          "s3Key": "amplify-builds/get-56715449496a71333652-build.zip"
+          "s3Key": "amplify-builds/get-424e76614e75666d4d6e-build.zip"
+        },
+        "getStatus": {
+          "deploymentBucketName": "amplify-thingkathon-staging-104313-deployment",
+          "s3Key": "amplify-builds/getStatus-5652506d544973367358-build.zip"
+        },
+        "deviceCommand": {
+          "deploymentBucketName": "amplify-thingkathon-staging-104313-deployment",
+          "s3Key": "amplify-builds/deviceCommand-7551634b774b77537575-build.zip"
         }
       }
     }

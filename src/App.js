@@ -7,6 +7,7 @@ import Home from './pages';
 import About from './pages/about';
 import Notes from './pages/notes';
 import Asset from './pages/assets';
+import Shop from './pages/shop'
 
 import { Authenticator, AmplifyProvider, Button, Card, Text, Heading, Flex, Badge, Image, StepperField, useTheme, Tabs, TabItem, View } from '@aws-amplify/ui-react';
 
@@ -79,6 +80,7 @@ function App() {
             <Route path='/about' exact element={<About/>} />
             <Route path='/notes' element={<Notes/>} />
             <Route path='/asset' element={<Asset />} />
+            <Route path='/shop' element={<Shop />} />
           </Routes>
           </Router>
         </div>

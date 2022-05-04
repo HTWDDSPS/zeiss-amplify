@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div>
       <h1>
-        Team SOBA, weil wir lieben Instant Noodles
+        Team SOBA, wir lieben Instant Noodles!
         </h1>
         <p>Projektgruppe der HTW Dresden</p>
 

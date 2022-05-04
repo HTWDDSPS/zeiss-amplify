@@ -49,3 +49,16 @@
   position: absolute;
   top: 15px; 
 }
+.flaggedBad {
+  color: white;
+  background-color: crimson;
+  border-radius: 3px;
+}
+.flaggedGood {
+  color: white;
+  background-color: rgb(20, 220, 63);
+  border-radius: 3px;
+}
+.pageBody {
+  padding: 10px;
+}
