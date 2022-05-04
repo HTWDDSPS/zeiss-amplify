@@ -15,6 +15,11 @@ export type AmplifyDependentResourcesAttributes = {
             "GraphQLAPIKeyOutput": "string",
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        },
+        "RestSidewise": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         }
     },
     "storage": {
@@ -25,6 +30,14 @@ export type AmplifyDependentResourcesAttributes = {
             "PartitionKeyName": "string",
             "PartitionKeyType": "string",
             "Region": "string"
+        }
+    },
+    "function": {
+        "get": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     }
 }
