@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as AWS from "@aws-sdk/client-iotsitewise";
 import Amplify, { API } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import awsconfig from '../aws-exports';
 Amplify.configure(awsconfig);
 const client = new AWS.IoTSiteWise({ region: "EU-WEST-1" });
 

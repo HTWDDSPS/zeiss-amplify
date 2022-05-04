@@ -5,15 +5,15 @@ const About = () => {
     <div>
       <h1>
         Team SOBA, weil wir lieben Instant Noodles
+        </h1>
+        <p>Projektgruppe der HTW Dresden</p>
 
-        Projektgruppe der HTW Dresden
-
-        Felix Brandt
-        Eric Brandt
-        Marvin Matthes
-        Paul Patolla
-        Martin Krockert 
-      </h1>
+        <p>Felix Brandt <br />
+        Eric Brandt<br />
+        Marvin Matthes<br />
+        Paul Patolla<br />
+        Martin Krockert</p> 
+      
     </div>
   );
 };
