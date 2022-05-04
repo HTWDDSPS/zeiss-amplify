@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* custom.css */
+.view-textCenter {
+  text-align: center;
+}
+.amplify-button {
+  color: white;
+}
+
+#SignOutBtn {
+  position: absolute;
+  top: 15px; 
+}

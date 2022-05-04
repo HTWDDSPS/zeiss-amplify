@@ -8,12 +8,10 @@ import About from './pages/about';
 import Notes from './pages/notes';
 import Asset from './pages/assets';
 
-import { Authenticator, AmplifyProvider, Button, Card, Text, Heading, Flex, Badge, Image, StepperField, useTheme, Tabs, TabItem } from '@aws-amplify/ui-react';
+import { Authenticator, AmplifyProvider, Button, Card, Text, Heading, Flex, Badge, Image, StepperField, useTheme, Tabs, TabItem, View } from '@aws-amplify/ui-react';
 
 import '@aws-amplify/ui-react/styles.css';
 import './App.css';
-
-const initialFormState = { name: '', description: '' }
 
 const components = {
 
@@ -21,11 +19,11 @@ const components = {
     const { tokens } = useTheme();
 
     return (
-      <div textAlign="center" padding={tokens.space.large}>
+      <View className="view-textCenter" padding={tokens.space.large}>
         <Text color={`${tokens.colors.neutral['80']}`}>
-          &copy; All Rights Reserved
+          &copy; All Rights Reserved, Team SOBA
         </Text>
-      </div>
+      </View>
     );
   },
 
@@ -66,10 +64,6 @@ const components = {
 
 
 function App() {
-
-
-
-
   return (
     <div className="App">
 
@@ -78,7 +72,7 @@ function App() {
 
         <div className="App">
           <Router>
-          <Navbar />
+          <Navbar signOut />
 
           <Routes>
             <Route exact path='/'  element={<Home />} />
@@ -87,8 +81,6 @@ function App() {
             <Route path='/asset' element={<Asset />} />
           </Routes>
           </Router>
-
-          <button onClick={signOut}>Sign out</button>
         </div>
       )}
     </Authenticator>

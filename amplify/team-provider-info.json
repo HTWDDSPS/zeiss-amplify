@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "ZeissThingkathon": {}
+      },
+      "function": {
+        "get": {
+          "deploymentBucketName": "amplify-thingkathon-staging-104313-deployment",
+          "s3Key": "amplify-builds/get-56715449496a71333652-build.zip"
+        }
       }
     }
   }
